@@ -1,0 +1,7 @@
+database:
+    name: gitlab
+    password: gitlab
+    user: gitlab
+ports:
+    http: 30080
+    ssh: 30022

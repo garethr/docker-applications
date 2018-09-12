@@ -1,0 +1,7 @@
+version: 0.1.0
+name: gitlab
+description: GitLab provides a tools for managing software projects, including Git repositories and issue tracking 
+namespace: garethr
+maintainers:
+  - name: gareth rushgrove
+    email: gareth@morethanseven.net

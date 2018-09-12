@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+  gitlab:
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        postgresql['enable'] = false
+        gitlab_rails['db_username'] = "${database.user}"
+        gitlab_rails['db_password'] = "${database.password}"
+        gitlab_rails['db_host'] = "postgresql"
+        gitlab_rails['db_port'] = "5432"
+        gitlab_rails['db_database'] = "${database.name}"
+        gitlab_rails['db_adapter'] = "postgresql"
+        gitlab_rails['db_encoding'] = "utf8"
+        redis['enable'] = false
+        gitlab_rails['redis_host'] = "redis"
+        gitlab_rails['redis_port'] = "6379"
+        external_url "http://gitlab.example.com:${ports.http}"
+        gitlab_rails['gitlab_shell_ssh_port'] = "${ports.ssh}"
+    ports:
+      - "${ports.http}:30080"
+      - "${ports.ssh}:22"
+
+  postgresql:
+    restart: always
+    image: postgres:9.6.2-alpine
+    environment:
+      - POSTGRES_USER=${database.user}
+      - POSTGRES_PASSWORD=${database.password}
+      - POSTGRES_DB=${database.name}
+
+  redis:
+    restart: always
+    image: redis:3.0.7-alpine
+
