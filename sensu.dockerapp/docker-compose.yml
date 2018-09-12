@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  sensu-backend:
+    image: sensu/sensu:${version}
+    command: sensu-backend start
+    hostname: sensu-backend
+    ports:
+      - ${ports.web}:3000
+      - ${ports.api}:8080
+  sensu-agent:
+    image: sensu/sensu:${version}
+    command: sensu-agent start --backend-url ws://sensu-backend:8081
+    depends_on:
+      - sensu-backend
+    deploy:
+      replicas: ${agents}

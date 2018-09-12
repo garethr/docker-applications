@@ -1,0 +1,7 @@
+version: 0.1.0
+name: sensu
+description: Open source monitoring tool for ephemeral infrastructure & distributed applications 
+namespace: garethr
+maintainers:
+  - name: gareth rushgrove
+    email: gareth@morethanseven.net
