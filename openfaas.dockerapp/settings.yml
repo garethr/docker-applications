@@ -1,0 +1,14 @@
+auth: true
+scale_from_zero: false
+direct_functions: true
+ports:
+  gateway: 8080
+  prometheus: 9090
+  alertmanager: 9093
+versions:
+  gateway: 0.9.2
+  faas: 0.4.2
+  nats-streaming: 0.6.0
+  queue-worker: 0.5.2
+  prometheus: v2.3.1
+  alertmanager: v0.15.0

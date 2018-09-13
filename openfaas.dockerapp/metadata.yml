@@ -1,0 +1,7 @@
+version: 0.1.0
+name: openfaas
+description: Severless functions made simple
+namespace: garethr
+maintainers:
+  - name: gareth rushgrove
+    email: gareth@morethanseven.net
